@@ -108,43 +108,41 @@ public class Main {
         sc.close();
 
         // ---------- Python Plot ----------
-        String plotScript = """
-                import matplotlib.pyplot as plt
-                
-                weights = [%f, %f, %f]
-                cgs = [%f, %f, %f]
-                labels = ['Zero Fuel', 'Takeoff', 'Landing']
-                
-                plt.figure(figsize=(6,6))
-                plt.scatter(cgs, weights)
-                
-                for cg, wt, lbl in zip(cgs, weights, labels):
-                    plt.text(cg, wt, lbl, fontsize=10, ha='left', va='bottom')
-                
-                plt.vlines(x=35, ymin=1500, ymax=1950, color='black', linestyle='-', linewidth=2)
-                plt.vlines(x=40.5, ymin=1500, ymax=2200, color='black', linestyle='-', linewidth=2)
-                plt.vlines(x=47.5, ymin=1500, ymax=2550, color='black', linestyle='-', linewidth=2)
-                
-                plt.hlines(y=2200, xmin=37.5, xmax=40.5, color='black', linestyle='-', linewidth=2)
-                plt.hlines(y=2550, xmin=41, xmax=47.5, color='black', linestyle='-', linewidth=2)
-                
-                x = [35, 41, 47.5]
-                y = [1950, 2550, 2550]
-                plt.plot(x,y, color='black',linewidth=2)
-                
-                
-                plt.xlabel("CG Location (inches)")
-                plt.ylabel("Weight (lbs)")
-                plt.title("Weight vs CG (Auto-Generated)")
-                plt.xlim(34,48)
-                plt.ylim(1500,2600)
-                plt.grid(True)
-                plt.show()
-                plt.savefig("C:/Users/Domenic/IdeaProjects/WeightAndBalance/wb_plot.png", dpi=150, bbox_inches='tight')
-                """.formatted(
-                zeroFuelWeight, takeoffWeight, landingWeight,
-                zeroFuelArm, takeoffCG, landingCG
-        );
+        String plotScript =
+    "import matplotlib.pyplot as plt\n" +
+    "\n" +
+    "weights = [" + zeroFuelWeight + ", " + takeoffWeight + ", " + landingWeight + "]\n" +
+    "cgs = [" + zeroFuelArm + ", " + takeoffCG + ", " + landingCG + "]\n" +
+    "labels = ['Zero Fuel', 'Takeoff', 'Landing']\n" +
+    "\n" +
+    "plt.figure(figsize=(6,6))\n" +
+    "plt.scatter(cgs, weights)\n" +
+    "\n" +
+    "for cg, wt, lbl in zip(cgs, weights, labels):\n" +
+    "    plt.text(cg, wt, lbl, fontsize=10, ha='left', va='bottom')\n" +
+    "\n" +
+    "plt.vlines(x=35, ymin=1500, ymax=1950, color='black', linestyle='-', linewidth=2)\n" +
+    "plt.vlines(x=40.5, ymin=1500, ymax=2200, color='black', linestyle='-', linewidth=2)\n" +
+    "plt.vlines(x=47.5, ymin=1500, ymax=2550, color='black', linestyle='-', linewidth=2)\n" +
+    "\n" +
+    "plt.hlines(y=2200, xmin=37.5, xmax=40.5, color='black', linestyle='-', linewidth=2)\n" +
+    "plt.hlines(y=2550, xmin=41, xmax=47.5, color='black', linestyle='-', linewidth=2)\n" +
+    "\n" +
+    "x = [35, 41, 47.5]\n" +
+    "y = [1950, 2550, 2550]\n" +
+    "plt.plot(x,y, color='black',linewidth=2)\n" +
+    "\n" +
+    "plt.xlabel(\"CG Location (inches)\")\n" +
+    "plt.ylabel(\"Weight (lbs)\")\n" +
+    "plt.title(\"Weight vs CG (Auto-Generated)\")\n" +
+    "plt.xlim(34,48)\n" +
+    "plt.ylim(1500,2600)\n" +
+    "plt.grid(True)\n" +
+    "plt.show()\n" +
+        "plt.savefig('wb_plot.png', dpi=150, bbox_inches='tight')\n";
+
+
+
 
         System.out.println("Current directory: " + System.getProperty("user.dir"));
 
