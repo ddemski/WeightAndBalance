@@ -7,7 +7,6 @@ public class Main {
     // ---------- FIXED VALUES ----------
 
     static final double WEIGHT_ME = 190;
-    //static final double WEIGHT_INSTRUCTOR = 250;
 
     // Fuel
     static final double USABLE_FUEL_LBS = 318;  // 53 gallons * 6
@@ -235,3 +234,4 @@ public class Main {
 
     }
 }
+
